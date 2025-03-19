@@ -1,7 +1,7 @@
 import java.util.*;
 
 public class CheckingAccount{
-	double balance;
+	double balance = 0d;
 	
 	public static void main(String[] args){
 		CheckingAccount ca = new CheckingAccount();
@@ -54,8 +54,8 @@ public class CheckingAccount{
 	}//end getBalance def
 
 	public String getBalanceString(){
-		String strBalance = String.valueOf(this.balance);
-		String formattedStrBalance = String.format("$%s", strBalance);
+		//String strBalance = String.valueOf(this.balance);
+		String formattedStrBalance = String.format("$%.02f", this.balance);
 		return formattedStrBalance;
 	}//end getBalanceString def
 
