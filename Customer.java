@@ -60,11 +60,7 @@ class Customer extends User{
 	}//end changePIN def
 
 	public String getReport(){
-		String tempUserName = getUserName();
-		String tempPIN = getPIN();
-		String tempCheckingBalance = ca.getBalanceString();
-		String tempSavingsBalance = sa.getBalanceString();
-		String report = tempUserName + ", " tempPIN + "\nChecking: " + tempCheckingBalance + "\nSavings: " + tempSavingsBalance;
+		String report = getUserName() + ", " + getPIN() + "\nChecking: " + checking.getBalanceString() + "\nSavings: " + savings.getBalanceString();
 		return report;
 	}//end getReport def
 }//end class def
