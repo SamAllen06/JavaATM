@@ -37,7 +37,7 @@ class Customer extends User{
 			}//end else if
 			else if (userChoice.equals("3")){
 				System.out.println("Changing PIN. ");
-				//changePIN();
+				changePIN();
 			}//end else if
 			else{
 				System.out.println("I didn't get that, please try again. ");
@@ -53,10 +53,18 @@ class Customer extends User{
 	}//end menu def
 
 	public void changePIN(){
-		
+		System.out.print("What would you like your new PIN to be? ");
+		Scanner input = new Scanner(System.in);
+		String userChoice = input.nextLine();
+		setPIN(userChoice);
 	}//end changePIN def
 
 	public String getReport(){
-		return "0";
+		String tempUserName = getUserName();
+		String tempPIN = getPIN();
+		String tempCheckingBalance = ca.getBalanceString();
+		String tempSavingsBalance = sa.getBalanceString();
+		String report = tempUserName + ", " tempPIN + "\nChecking: " + tempCheckingBalance + "\nSavings: " + tempSavingsBalance;
+		return report;
 	}//end getReport def
 }//end class def
