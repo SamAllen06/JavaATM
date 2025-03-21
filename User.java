@@ -17,6 +17,9 @@ abstract class User implements HasMenu{
 			if (PIN.equals(this.PIN)){
 				return true;
 			}//end if
+			else{
+				return false;
+			}//end else
 		}//end if
 		else{
 			return false;
@@ -28,6 +31,9 @@ abstract class User implements HasMenu{
 			if (PIN.equals(this.PIN)){
 				return true;
 			}//end if
+			else{
+				return false;
+			}//end else
 		}//end if
 		else{
 			return false;
@@ -45,17 +51,7 @@ abstract class User implements HasMenu{
 	public void setPIN(String PIN){
 		this.PIN = PIN;
 
-		/* exception handler?
-		tempPIN = input.nextLine();
-		
-		try{
-			double.parseDouble(tempPIN);
-			this.PIN = tempPIN;
-		}//end try
-		catch (NumberFormatException e){
-			System.out.print("Invalid pin. Try again. ");
-		}//end catch
-		*/
+		//use String.matches("^\\d{4}$") for exception handler
 	}//end setPin def
 	
 	public String getPIN(){
