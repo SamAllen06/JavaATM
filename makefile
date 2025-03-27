@@ -1,3 +1,6 @@
+Bank.class: Bank.java Customer.class
+	javac -g Bank.java
+
 Customer.class: Customer.java User.class CheckingAccount.class SavingsAccount.class
 	javac -g Customer.java
 
