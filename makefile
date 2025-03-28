@@ -1,3 +1,6 @@
+run: Bank.java Bank.class
+	java Bank
+
 Bank.class: Bank.java Customer.class
 	javac -g Bank.java
 
