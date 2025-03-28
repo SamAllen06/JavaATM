@@ -1,15 +1,48 @@
 import java.util.*;
+import java.io.*;
 
-class Bank{
+class Bank implements Serializable{
 	Admin admin = new Admin();
-	ArrayList<Customer> customers = new ArrayList();
-	//CustomerArrayList customers = new CustomerArrayList();
-	//CustomerArrayList();
+	CustomerArrayList customers = new CustomerArrayList();
+	
+	public Bank(){
+	//loadSampleCustomers();
+	//saveCustomers();
+	loadCustomers();
+	start();
+	saveCustomers();
+	}//end constructor
 
 	public static void main(String[] args){
 		Bank bank = new Bank();
-		bank.start();
 	}//end main def
+
+	public void saveCustomers(){
+		try{
+			FileOutputStream fileOut = new FileOutputStream("CustomerArray.dat");
+			ObjectOutputStream objectOut = new ObjectOutputStream(fileOut);
+			objectOut.writeObject(customers);
+			objectOut.close();
+			fileOut.close();
+		}//end try
+		catch(Exception e){
+			System.out.println("Error: " + e.getMessage());
+		}//end catch
+	}//end saveCustomers def
+
+	public void loadCustomers(){
+		try{
+			FileInputStream fileIn = new FileInputStream("CustomerArray.dat");
+			ObjectInputStream objectIn = new ObjectInputStream(fileIn);
+			//customers = (ArrayList<Customer>)objectIn.readObject();
+			customers = (CustomerArrayList)objectIn.readObject();
+			objectIn.close();
+			fileIn.close();
+		}//end try
+		catch(Exception e){
+			System.out.println("Error:" + e.getMessage());
+		}//end catch
+	}//end loadCustomers def
 
 	public String menu(){
 		System.out.println("Bank menu: ");
@@ -24,9 +57,6 @@ class Bank{
 	public void start(){
 		boolean keepGoing = true;
 		admin.Admin();
-
-		loadSampleCustomers();
-		fullCustomerReport();
 		
 		while (keepGoing){
 			String response = menu();
@@ -80,9 +110,9 @@ class Bank{
 	}//end startAdmin
 
 	public void setInterest(){
-		System.out.print("What would you like the interest rate to be? ");
-		double response = admin.getDouble();
 		for (Customer customer: customers){
+			System.out.print("What would you like the interest rate for " + customer.getUserName() + " to be? ");
+			double response = customer.checking.getDouble();
 			customer.savings.setInterestRate(response);
 		}//end for loop
 	}//end setInterest
@@ -156,8 +186,8 @@ class Bank{
 	}//end applyInterest def
 }//end bank def
 
-/*
-class CustomerArrayList{
-	ArrayList<Customer> customers = new ArrayList();
+
+class CustomerArrayList extends ArrayList<Customer> implements Serializable{
+	private static long serialVersionUID = 1L;
 }//end CustomerArrayList def
-*/
+

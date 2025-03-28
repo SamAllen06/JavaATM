@@ -1,6 +1,7 @@
 import java.util.*;
+import java.io.*;
 
-public class CheckingAccount{
+public class CheckingAccount implements Serializable{
 	double balance = 0d;
 	
 	public static void main(String[] args){
@@ -67,7 +68,7 @@ public class CheckingAccount{
 		System.out.println(getBalanceString());
 	}//end checkBalance def
 
-	private double getDouble(){
+	public double getDouble(){
 		boolean keepGoing = true;
 		Scanner input = new Scanner(System.in);
 		String userInput = input.nextLine();

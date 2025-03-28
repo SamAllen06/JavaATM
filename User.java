@@ -1,6 +1,7 @@
 import java.util.*;
+import java.io.*;
 
-abstract class User implements HasMenu{
+abstract class User implements HasMenu, Serializable{
 	String userName = "";
 	String PIN = "";
 	
@@ -12,8 +13,6 @@ abstract class User implements HasMenu{
 
 		System.out.print("What's your 4-digit pin? ");
 		String PIN = input.nextLine();
-
-		System.out.println(this.userName + ", " + this.PIN);
 
 		if (userName.equals(this.userName)){
 			if (PIN.equals(this.PIN)){

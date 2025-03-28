@@ -20,22 +20,4 @@ class Admin extends User{
 		return adminReport;
 	}//end getReport def
 
-	public double getDouble(){
-                boolean keepGoing = true;
-                Scanner input = new Scanner(System.in);
-                String userInput = input.nextLine();
-                double userDouble = 0d;
-                while (keepGoing){
-                        try{
-                                userDouble = Double.parseDouble(userInput);
-                                keepGoing = false;
-                        }//end try
-                        catch(NumberFormatException e){
-                                System.out.println("Invalid input. Try again.");
-                        }//end catch
-                }//end while loop
-                return userDouble;
-        }//end getDouble def
-
-	
 }//end class def
