@@ -23,6 +23,7 @@ class Bank{
 
 	public void start(){
 		boolean keepGoing = true;
+		admin.Admin();
 
 		loadSampleCustomers();
 		fullCustomerReport();
@@ -39,12 +40,52 @@ class Bank{
 			}//end else if
 			else if (response.equals("2")){
 				System.out.println("Logging in as admin...");
+				boolean isLogin = admin.login();
+				if (isLogin){
+					startAdmin();
+				}//end if
 			}//end else if
 			else{
 				System.out.println("Invalid input. ");
 			}//end else
 		}//end while loop
 	}//end start def
+
+	public void startAdmin(){
+		boolean keepGoing = true;
+		
+		while (keepGoing){
+			String response = admin.menu();
+			if (response.equals("0")){
+				keepGoing = false;
+				System.out.println("Exiting admin. ");
+			}//end if
+			else if (response.equals("1")){
+				fullCustomerReport();
+			}//end else if
+			else if (response.equals("2")){
+				addUser();
+			}//end else if
+			else if (response.equals("3")){
+				applyInterest();
+			}//end else if
+			else if (response.equals("4")){
+				setInterest();
+			}//end else if
+			else{
+				System.out.println("Invalid input. ");
+				keepGoing = false;
+			}//end else
+		}//end while loop
+	}//end startAdmin
+
+	public void setInterest(){
+		System.out.print("What would you like the interest rate to be? ");
+		double response = admin.getDouble();
+		for (Customer customer: customers){
+			customer.savings.setInterestRate(response);
+		}//end for loop
+	}//end setInterest
 
 	public void loadSampleCustomers(){
 		Customer albert = new Customer();

@@ -13,15 +13,20 @@ abstract class User implements HasMenu{
 		System.out.print("What's your 4-digit pin? ");
 		String PIN = input.nextLine();
 
+		System.out.println(this.userName + ", " + this.PIN);
+
 		if (userName.equals(this.userName)){
 			if (PIN.equals(this.PIN)){
+				System.out.println("Login successful");
 				return true;
 			}//end if
 			else{
+				System.out.println("PIN wrong");
 				return false;
 			}//end else
 		}//end if
 		else{
+			System.out.println("Username wrong");
 			return false;
 		}//end else
 	}//end login constructor
